@@ -8,7 +8,7 @@ function add(number1, number2){
 function addNumbers(){
     let addNumber1 = Number(document.querySelector('#add1').value);
     let addNumber2 = Number(document.querySelector('#add2').value);
-    document.querySelector('#sum').value = add(addNumber1, addNumber2);
+    document.querySelector('#sum').value = add(addNumber1,addNumber2);
 }
 document.querySelector('#addNumbers').addEventListener('click', addNumbers);
 /* Function Expression - Subtract Numbers */
@@ -49,18 +49,25 @@ function divideNumbers() {
 document.querySelector('#divideNumbers').addEventListener('click', divideNumbers)
 
 /* Decision Structure */
-function getTotal(){
-    let subtotal = Number(document.querySelector('#subtotal').value);
-    let member = document.querySelector('#member').checked;
-    total = subtotal;
-    if (member) {
-        total = total * .85;
-    }
-    total = `$ ${total.toFixed(2)}`
-    document.querySelector('#total').innerHTML = total;
-}
-document.querySelector('#getTotal').addEventListener('click', getTotal);
+const subtotalInput = document.getElementById('subtotal');
+const memberCheckbox = document.getElementById('member');
+const totalSpan = document.getElementById('total');
+const getTotalButton = document.getElementById('getTotal');
 
+// Add event listener to the Get Total Due button
+getTotalButton.addEventListener('click', calculateTotal);
+
+// Function to calculate and output the total
+function calculateTotal() {
+  // 1. Declare variable based on user input and ensure it's in a price format.
+  const subtotalValue = parseFloat(subtotalInput.value) || 0;
+  // 2. Was box checked? If so, apply 15% discount.
+  const discount = memberCheckbox.checked ? 0.15 : 0;
+  const discountedSubtotal = subtotalValue - subtotalValue * discount;
+  // 3. Output total, ensure it's in the price format.
+  const formattedTotal = `Total Due: $${discountedSubtotal.toFixed(2)}`;
+  totalSpan.textContent = formattedTotal;
+}
 /* ARRAY METHODS - Functional Programming */
 let numbersArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 /* Output Source Array */
@@ -74,5 +81,5 @@ document.querySelector('#sumOfArray').innerHTML = numbersArray.reduce((sum, numb
 /* Output Multiplied by 2 Array */
 document.querySelector('#multiplied').innerHTML = numbersArray.map(number => number * 2);
 /* Output Sum of Multiplied by 2 Array */
-twoNumbersArray = numbersArray.map(number => number * 2);
-document.querySelector('#sumOfMultiplied').innerHTML = twoNumbersArray.reduce((sum, number) => sum + number);
+const sumOfMultiplied = numbersArray.map(number => number * 2).reduce((sum, number) => sum + number, 0);
+document.querySelector('#sumOfMultiplied').innerHTML = sumOfMultiplied;
