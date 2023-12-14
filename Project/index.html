@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Workout Tracker</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Gym Workout Tracker</h1>
+        <div id="exercise-list">
+            <h2>Available Exercises</h2>
+            <div id="back" onclick="getdata(this.id)">Back Exercises</div>
+            <div id="cardio" onclick="getdata(this.id)">Cardio Exercises</div>
+            <div id="chest" onclick="getdata(this.id)">Chest Excersises</div>
+            <div id="lower arms" onclick="getdata(this.id)">Lower Arms Exercises</div>
+            <div id="lower legs" onclick="getdata(this.id)">Lower Legs Exercises</div>
+            <div id="shoulders" onclick="getdata(this.id)">Shoulders Exercises</div>
+        </div>
+        <div id="workout-program">
+            <h2>Workout Program</h2>
+            <div id="selected-exercises"></div>
+        </div>
+        <button onclick="clearlist()">Clear</button>
+    </div>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
